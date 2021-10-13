@@ -1,4 +1,4 @@
-public class Car {
+public class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
     String brand;
     int horsePower;
     boolean isAwd; // полноприводный?
@@ -10,12 +10,18 @@ public class Car {
         this("Toyota Supra", 387, false, 5.8f);
     }
 
+    @Override // если интерфейс не содержит реализацию метода
+    public void ride(int finalDistance) {
+        System.out.println("Ridding car");
+    }
+
     //конструктор с параметрами
     public Car(String brand, int horsePower, boolean isAwd, float acceleration) {
         this.brand = brand;
         this.horsePower = horsePower;
         this.isAwd = isAwd;
         this.acceleration = acceleration;
+        this.type = "Car";
         carsNumber++;
     }
 
