@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         //Пример полиморфизма
-        Rideable rideableCar = new Car();
+        //Rideable rideableCar = new Car();
         Rideable rideableBoat = new Boat();
-        rideableCar.ride(100);
+        //rideableCar.ride(100);
         rideableBoat.ride(1000);
 
         /*
