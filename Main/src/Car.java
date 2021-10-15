@@ -1,4 +1,4 @@
-public class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
+public abstract class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
     String brand;
     int horsePower;
     boolean isAwd; // полноприводный?
@@ -29,9 +29,10 @@ public class Car extends Transport implements Rideable { // наследует �
         this.acceleration = acceleration;
     }
 
-    void start (){
+    //Абстрактному методу не нужна реализация
+    abstract void start (); /*{
         System.out.println(brand + " makes Wrrrruuum!");
-    }
+    }*/
 
     float countSpeed(float time) {
         return (100/acceleration)*time;
