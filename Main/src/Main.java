@@ -18,6 +18,13 @@ public class Main {
         Sedan sedan2 = new Sedan("qwe", 123, false, 12.2f);
         System.out.println(sedan2.luggage.items);
 
+        //Пример работы внутреннего класса
+        Car car = new Car();
+        car.engine.setSpeed(12);
+        // Car.Engine engine = new Car.Engine(12); - ошибка, тк Engine - неотъемлимая часть Car
+        Car.Engine engine1 = new Car().new Engine(13); // Engine связывается с новым авто
+        car.new Engine(1); // изменение двигателя у старого авто "car"
+
         //Пример полиморфизма
         //Rideable rideableCar = new Car();
         //Rideable rideableBoat = new Boat();

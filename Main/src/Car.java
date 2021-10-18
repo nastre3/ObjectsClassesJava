@@ -1,11 +1,13 @@
 import java.util.Objects;
 
-public abstract class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
+public class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
     String brand;
     int horsePower;
     boolean isAwd; // полноприводный?
     float acceleration; // разгон - за какое время в часах разогнался до 100 км автомобиль
     static int carsNumber; // статическое поле принадлежит классу целиком (не отдельному объекту)
+    int currentSpeed;
+    Engine engine;
 
     //конструктор по умолчанию
     public Car() {
@@ -20,7 +22,8 @@ public abstract class Car extends Transport implements Rideable { // насле�
     //конструктор с параметрами
     public Car(String brand, int horsePower, boolean isAwd, float acceleration) {
         this.brand = brand;
-        this.horsePower = horsePower;
+        engine = new Engine(horsePower);
+        //this.horsePower = horsePower;
         this.isAwd = isAwd;
         this.acceleration = acceleration;
         this.type = "Car";
@@ -32,14 +35,17 @@ public abstract class Car extends Transport implements Rideable { // насле�
     }
 
     //Абстрактному методу не нужна реализация
+    /*
     abstract void start (); /*{
         System.out.println(brand + " makes Wrrrruuum!");
-    }*/
+    }
+    */
 
     float countSpeed(float time) {
         return (100/acceleration)*time;
     }
 
+    /*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // сравнение по ссылкам
@@ -64,6 +70,23 @@ public abstract class Car extends Transport implements Rideable { // насле�
                 ", isAwd=" + isAwd +
                 ", acceleration=" + acceleration +
                 '}';
+    }
+*/
+
+    // Создание внутреннего класса
+    class Engine {
+        int horsePower;
+
+        public Engine(int horsePower) {
+            this.horsePower = horsePower;
+        }
+        void increaseSpeed() {
+            currentSpeed += 20; // можно обращаться к полям Car
+        }
+
+        void setSpeed(int currentSpeed){
+            Car.this.currentSpeed = currentSpeed;
+        }
     }
 }
 
