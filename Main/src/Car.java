@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public abstract class Car extends Transport implements Rideable { // наследует от класса Transport, от интерфейса Rideable
     String brand;
     int horsePower;
@@ -37,4 +39,31 @@ public abstract class Car extends Transport implements Rideable { // насле�
     float countSpeed(float time) {
         return (100/acceleration)*time;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // сравнение по ссылкам
+        if (o == null || getClass() != o.getClass()) return false; // если классы объектов разные, то и объекты разные
+        Car car = (Car) o; // приведение объекта к типу данных нашего класса
+        // сравнение остальных полей
+        return horsePower == car.horsePower && isAwd == car.isAwd && Float.compare(car.acceleration, acceleration) == 0 && Objects.equals(brand, car.brand);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, horsePower, isAwd, acceleration);
+    }
+
+    @Override // переопределение метода, по умол наследуется от Object
+    // toString как будет выглядить объект в строковом представлении
+    // без переопределения: название_класса@хеш_объекта
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", horsePower=" + horsePower +
+                ", isAwd=" + isAwd +
+                ", acceleration=" + acceleration +
+                '}';
+    }
 }
+
