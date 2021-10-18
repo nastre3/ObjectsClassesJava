@@ -5,6 +5,19 @@ public class Main {
         Sedan sedan = new Sedan("qwe", 123, false, 12.2f);
         System.out.println(sedan);
 
+        // Использование вложенного статического класса Luggage
+        // связанного минимально с классом Sedan
+        sedan.luggage.addItem("Food");
+        sedan.luggage.addItem("Clothes");
+        System.out.println(sedan.luggage.items);
+
+        Sedan.Luggage luggage = new Sedan.Luggage();
+        sedan.luggage=luggage; // изменение содержимого luggage
+        System.out.println(sedan.luggage.items); // другой пустой багаж
+
+        Sedan sedan2 = new Sedan("qwe", 123, false, 12.2f);
+        System.out.println(sedan2.luggage.items);
+
         //Пример полиморфизма
         //Rideable rideableCar = new Car();
         //Rideable rideableBoat = new Boat();
