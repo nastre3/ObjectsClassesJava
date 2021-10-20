@@ -59,7 +59,7 @@ public class Car extends Transport implements Rideable { // наследует �
     public int hashCode() {
         return Objects.hash(brand, horsePower, isAwd, acceleration);
     }
-
+*/
     @Override // переопределение метода, по умол наследуется от Object
     // toString как будет выглядить объект в строковом представлении
     // без переопределения: название_класса@хеш_объекта
@@ -71,7 +71,7 @@ public class Car extends Transport implements Rideable { // наследует �
                 ", acceleration=" + acceleration +
                 '}';
     }
-*/
+
 
     // Создание внутреннего класса
     class Engine {
